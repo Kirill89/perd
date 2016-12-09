@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Tags</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addTag()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding>
+      <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+        {{item.name}}
+        <ion-badge item-right>{{item.wordCount}}</ion-badge>
+      </button>
+      <ion-item-options side="right">
+        <button ion-button icon-only color="light">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button icon-only color="danger">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <div *ngIf="selectedItem" padding>
+    You navigated here from <b>{{selectedItem.title}}</b>
+  </div>
+</ion-content>
